@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <title>你一定会做我老婆的</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            margin: 0;
+            background: #FFB6C1 linear-gradient(45deg, #ffb3d9 0%, #ffd9e8 100%);
+            font-family: "Microsoft Yahei", cursive;
+        }
+
+        .character {
+            width: 150px;
+            height: 150px;
+            margin-bottom: 30px;
+            border-radius: 50%;
+            box-shadow: 0 8px 20px rgba(255,102,178,0.3);
+            background: url('http://mms1.baidu.com/it/u=2431409222,1056887964&fm=253&app=120&f=GIF') center/cover; /* 替换为您的图片URL */
+        }
+
+        h1 {
+            color: #FF1493;
+            text-shadow: 2px 2px 4px rgba(255,20,147,0.2);
+            margin: 20px 0;
+        }
+
+        #btnContainer {
+            display: flex;
+            gap: 30px;
+            margin-top: 30px;
+        }
+
+        button {
+            min-width: 120px;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 30px;
+            font-size: 18px;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        #yesBtn {
+            background: #FF69B4;
+            color: white;
+            transform: scale(1);
+        }
+
+        #noBtn {
+            background: #F0F0F0;
+            color: #666;
+            position: relative;
+        }
+
+        #noBtn:hover {
+            transform: translateY(-3px);
+        }
+    </style>
+</head>
+<body>
+    <div class="character"></div>
+    <h1>可以成为我的恋人吗？🌸</h1>
+    <div id="btnContainer">
+        <button id="yesBtn">可 以</button>
+        <button id="noBtn">不 要</button>
+    </div>
+
+    <script>
+        const yesBtn = document.getElementById('yesBtn');
+        const noBtn = document.getElementById('noBtn');
+        let scale = 1;
+
+        noBtn.addEventListener('click', function() {
+            scale *= 1.2;
+            yesBtn.style.transform = `scale(${scale})`;
+            
+            // 动态干扰效果
+            noBtn.style.transform = `translate(
+                ${Math.random()*20-10}px, 
+                ${Math.random()*20-10}px
+            )`;
+            noBtn.innerText = ['不 要', '再想想', '别点我', '不许选这个！'][Math.floor(Math.random()*4)];
+        });
+
+        yesBtn.addEventListener('click', function() {
+            Swal.fire({
+                title: '❤️ 我爱你老婆 ❤️',
+                html: '<div style="font-size:24px">我们永远在一起吧！</div>',
+                confirmButtonText: '好哒老公',
+                customClass: {
+                    popup: 'animated pulse'
+                }
+            });
+            yesBtn.style.transform = 'scale(1)';
+        });
+    </script>
+    
+    <!-- 引入SweetAlert2 -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</body>
+</html>
