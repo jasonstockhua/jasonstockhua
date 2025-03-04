@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html lang="zh-cn">
+<html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
-    <title>你一定会做我老婆的</title>
+    <title>你一定会做我老婆的!</title>
     <style>
         body {
             display: flex;
@@ -11,17 +11,29 @@
             justify-content: center;
             min-height: 100vh;
             margin: 0;
-            background: #FFB6C1 linear-gradient(45deg, #ffb3d9 0%, #ffd9e8 100%);
+            background: linear-gradient(45deg, #ffb3d9 0%, #ffd9e8 100);
             font-family: "Microsoft Yahei", cursive;
         }
 
         .character {
-            width: 150px;
-            height: 150px;
-            margin-bottom: 30px;
+            width: 180px;
+            height: 180px;
+            margin-bottom: 40px;
             border-radius: 50%;
-            box-shadow: 0 8px 20px rgba(255,102,178,0.3);
-            background: url('http://mms1.baidu.com/it/u=2431409222,1056887964&fm=253&app=120&f=GIF') center/cover; /* 替换为您的图片URL */
+            box-shadow: 0 12px 30px rgba(255,102,178,0.25);
+            background: url('http://mms1.baidu.com/it/u=2431409222,1056887964&fm=253&app=120&f=GIF') center/cover;
+            transition: transform 0.3s ease;
+        }
+
+        .character:hover {
+            transform: scale(1.05) rotate(-5deg);
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(255,102,178,0.3); }
+            70% { box-shadow: 0 0 0 15px rgba(255,102,178,0); }
+            100% { box-shadow: 0 0 0 0 rgba(255,102,178,0); }
         }
 
         h1 {
@@ -38,7 +50,7 @@
 
         button {
             min-width: 120px;
-            padding: 12px 30px;
+            padding: 12px 36px;
             border: none;
             border-radius: 30px;
             font-size: 18px;
@@ -71,6 +83,7 @@
         <button id="noBtn">不 要</button>
     </div>
 
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script>
         const yesBtn = document.getElementById('yesBtn');
         const noBtn = document.getElementById('noBtn');
@@ -95,13 +108,12 @@
                 confirmButtonText: '好哒老公',
                 customClass: {
                     popup: 'animated pulse'
-                }
+                },
+                background: '#fff0f5',
+                confirmButtonColor: '#ff69b4'
             });
             yesBtn.style.transform = 'scale(1)';
         });
     </script>
-    
-    <!-- 引入SweetAlert2 -->
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </body>
 </html>
